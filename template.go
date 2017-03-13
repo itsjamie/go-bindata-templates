@@ -20,6 +20,10 @@ func New(a AssetFunc, b AssetDirFunc) *BinTemplate {
 func (t *BinTemplate) LoadDirectory(directory string) (*template.Template, error) {
 	var tmpl *template.Template
 
+	return t.LoadDirectoryWithTemplate(tmpl, directory)
+}
+
+func (t *BinTemplate) LoadDirectoryWithTemplate(tmpl *template.Template, directory string) (*template.Template, error) {
 	files, err := t.AssetDir(directory)
 	if err != nil {
 		return tmpl, err
